@@ -1,0 +1,33 @@
+buildscript{
+    ext{                                                                                        // ext = build.gradle에서 사용하는 전역변수를 설정하겠다.
+        springBootVersion = '2.1.7.RELEASE'                                                      // springBootVersion = 전역변수를 생성하고 그 값을 '2.1.7 RELEASE'로 설정하겠다.
+    }                                                                                           // = 스프링 부트 그레이들 플러그인의 2.1.7 RELEASE를 의존성으로 받겠다
+    repositories{
+        mavenCentral()
+        jcenter()
+    }
+    dependencies{
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+// 아래 4개의 플러그인은 자바와 스프링부트를 사용하기 위해선 필수 플러그인이니 항상 추가하면 됨.
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'                                                 // io.spring.dependency-management = 스프링 부트의 의존성들을 관리해 주는 플러그인이기 때문에 필수
+
+group 'com.jojoldu.book'
+version '1.0-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {                                                                                  // 각종 의존성(라이브러리)들을 받을 원격 저장소 지정
+    mavenCentral()                                                                              // mavenCentral: 기본적으로 많이 사용
+    jcenter()                                                                                   // 라이브러리 업로드 난이도 때문에 jcenter도 많이 사용
+}
+
+dependencies {                                                                                  // dependencies = 프로젝트 개발에 필요한 의존성들을 선언하는 곳
+    compile('org.springframework.boot:spring-boot-starter-web')                                 // 10열의 classpath를 따라가기 위해 compile에는 버전 명시를 해주면 안됨 = 각 라이브러리의 버전 관리가 한 곳에 집중되고, 버전 충돌 문제도 해결되어 편하게 개발 가능
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+// intelliJ는 메이븐 저장소의 데이터를  인덱싱해서 관리하기 때문에 커뮤니티 버전을 사용해도 의존성 자동완성이 가능
