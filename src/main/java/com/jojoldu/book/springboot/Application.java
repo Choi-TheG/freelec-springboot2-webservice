@@ -11,5 +11,4 @@ public class Application {                                              // 해�
         SpringApplication.run(Application.class, args);                 // SpringApplication.run = 내장 WAS(Web Application Server, 웹 애플리케이션 서버, 외부에 WAS를 두지 않고 애플리케이션을 실행할 때 내부에서 WAS를 실행하는 것) 실행-> 톰캣 설치 필요 X
 
     }                                                                   //
-
 }
