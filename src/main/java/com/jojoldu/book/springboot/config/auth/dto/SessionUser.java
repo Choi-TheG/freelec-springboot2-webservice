@@ -1,0 +1,17 @@
+package com.jojoldu.book.springboot.config.auth.dto;
+
+import com.jojoldu.book.springboot.domain.user.User;
+import lombok.Getter;
+
+@Getter
+public class SessionUser {
+    private String name;
+    private String email;
+    private String picture;
+
+    public SessionUser(User user){          // 인증된 사용자 정보(로그인한 계정 정보)만 필요
+        this.name = user.getName();
+        this.email = user.getEmail();
+        this.picture = user.getPicture();
+    }
+}
